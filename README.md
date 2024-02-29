@@ -12,4 +12,4 @@
 # Сторонние библиотеки
 Утилита использует одну из самых мощных библиотек **graphicsearch.ahk**
 
-Ссылка на страничку разработчика: https://chunjee.github.io/graphicsearch.ahk/#/
+Ссылка на страницу разработчика: https://chunjee.github.io/graphicsearch.ahk/
