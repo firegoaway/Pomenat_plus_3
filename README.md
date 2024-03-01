@@ -39,7 +39,7 @@ graphicsearch_query := "|<>*164$45.y0000006L/ihRermjhpfxSyJzcxFvomzprzhOs0001000
      graphicsearch.mouseTip(resultObj[i].x, resultObj[i].y)
 ```
 
-## Статус
+## Статус разработки
 > Альфа
 
 ## Сторонние библиотеки
