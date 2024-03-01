@@ -20,7 +20,43 @@
 
 Полученное при завате изображение токенизируется в численно-буквенный вид смециальным образом, образуя особый посев символов ASCII, который соответствует захваченному набору сильно выраженных пикселей, позволяя обнаруживать не только тело захваченного изображения на экране, но и его метаморфических подобий по шейду, положению пикселей, размеру и соотношению сторон.
 
-![Tokenized image](https://raw.githubusercontent.com/firegoaway/Pomenat_plus_3/main/gitpics/Pic4.PNG)
+<sub>
+ t1 := A_TickCount, X := Y := ""
+graphicsearch_query := "|<>*164$45.y0000006L/ihRermjhpfxSyJzcxFvomzprzhOs0001000U"
+ resultObj := graphicsearch.search(GraphicSearch_query)
+ if (resultObj) {
+   X := resultObj.1.x, Y := resultObj.1.y, Comment := resultObj.1.id
+   ; Click, %X%, %Y%
+ }
+
+ MsgBox, 4096, Tip, % "Found :`t" Round(resultObj.MaxIndex())
+   . "`n`nTime  :`t" (A_TickCount-t1) " ms"
+   . "`n`nPos   :`t" X ", " Y
+   . "`n`nResult:`t" (resultObj ? "Success !" : "Failed !")
+
+ for i,v in resultObj
+   if (i<=2)
+     graphicsearch.mouseTip(resultObj[i].x, resultObj[i].y)
+</sub>
+
+<sup>
+ t1 := A_TickCount, X := Y := ""
+graphicsearch_query := "|<>*164$45.y0000006L/ihRermjhpfxSyJzcxFvomzprzhOs0001000U"
+ resultObj := graphicsearch.search(GraphicSearch_query)
+ if (resultObj) {
+   X := resultObj.1.x, Y := resultObj.1.y, Comment := resultObj.1.id
+   ; Click, %X%, %Y%
+ }
+
+ MsgBox, 4096, Tip, % "Found :`t" Round(resultObj.MaxIndex())
+   . "`n`nTime  :`t" (A_TickCount-t1) " ms"
+   . "`n`nPos   :`t" X ", " Y
+   . "`n`nResult:`t" (resultObj ? "Success !" : "Failed !")
+
+ for i,v in resultObj
+   if (i<=2)
+     graphicsearch.mouseTip(resultObj[i].x, resultObj[i].y)
+</sup>
 
 ## Статус
 ### Альфа
