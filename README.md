@@ -22,7 +22,7 @@
 
 ```AutoHotKey
  t1 := A_TickCount, X := Y := ""
-graphicsearch_query := "|<>*164$45.y0000006L/ihRermjhpfxSyJzcxFvomzprzhOs0001000U"
+graphicsearch_query := "|<>*164$45.y0000006L/ihRermjhpfxSyJzcxFvomzprzhOs0001000U"	;	TOKEN
  resultObj := graphicsearch.search(GraphicSearch_query)
  if (resultObj) {
    X := resultObj.1.x, Y := resultObj.1.y, Comment := resultObj.1.id
