@@ -42,6 +42,7 @@ graphicsearch_query := "|<>*164$45.y0000006L/ihRermjhpfxSyJzcxFvomzprzhOs0001000
 > [graphicsearch.ahk](https://chunjee.github.io/graphicsearch.ahk/)
 
 ## Как установить и пользоваться
+[!Инструкция по установке]
 - [x] Скачайте репозиторий в формате ZIP (зелёная кнопка "Code" -> Download ZIP);
 - [x] Разархивируйте в любое удобное место;
 - [x] Скачайте последнюю версию Pomenat+ 3.exe в разделе "Releases";
