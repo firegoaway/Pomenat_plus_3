@@ -11,12 +11,12 @@
 
 Особенность заключается в использовании не стандартного **ImageSearch**, а мощной поисковой библиотеки, позволяющей преобразовывать набор захваченных пикселей в `ASCII структуру`.
 
-![Screenshot of an ASCII structure of captured screen image](https://raw.githubusercontent.com/firegoaway/Pomenat_plus_3/main/gitpics/pic1.PNG)
+![Screenshot of an ASCII structure of captured screen image](https://raw.githubusercontent.com/firegoaway/Pomenat_plus_3/main/.gitpics/pic1.PNG)
 
 Такая структуа повторяет активные пиксели и игнорирует периферические слабо выраженные пиксели.
 
-![Original captured image](https://raw.githubusercontent.com/firegoaway/Pomenat_plus_3/main/gitpics/Pic2.PNG)
-![Modified image](https://raw.githubusercontent.com/firegoaway/Pomenat_plus_3/main/gitpics/Pic3.PNG)
+![Original captured image](https://raw.githubusercontent.com/firegoaway/Pomenat_plus_3/main/.gitpics/Pic2.PNG)
+![Modified image](https://raw.githubusercontent.com/firegoaway/Pomenat_plus_3/main/.gitpics/Pic3.PNG)
 
 Полученное при завате изображение токенизируется в численно-буквенный вид специальным образом, образуя особый посев символов ASCII, который соответствует захваченному набору сильно выраженных пикселей, позволяя обнаруживать не только тело захваченного изображения на экране, но и его морфологические подобия по оттенкам, положению пикселей, размеру и соотношению сторон.
 
