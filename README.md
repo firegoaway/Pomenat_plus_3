@@ -13,7 +13,7 @@
 
 ![Screenshot of an ASCII structure of captured screen image](https://raw.githubusercontent.com/firegoaway/Pomenat_plus_3/main/.gitpics/pic1.PNG)
 
-Такая структуа повторяет активные пиксели и игнорирует периферические слабо выраженные пиксели.
+Такая структура повторяет активные пиксели и игнорирует периферические слабо выраженные пиксели.
 
 ![Original captured image](https://raw.githubusercontent.com/firegoaway/Pomenat_plus_3/main/.gitpics/Pic2.PNG)
 ![Modified image](https://raw.githubusercontent.com/firegoaway/Pomenat_plus_3/main/.gitpics/Pic3.PNG)
