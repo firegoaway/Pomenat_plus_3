@@ -48,5 +48,5 @@ graphicsearch_query := "|<>*164$45.y0000006L/ihRermjhpfxSyJzcxFvomzprzhOs0001000
 | 2 | Разархивируйте в любое удобное место;     |
 | 3 | Скачайте последнюю версию **Pomenat+ 3.exe** в разделе [Releases](https://github.com/firegoaway/Pomenat_plus_3/releases);      |
 | 4 | Поместите скачаный файл в ранее разархивированную папку;      |
-| 5 | Запустите Pomenat+ 3.exe;      |
+| 5 | Запустите **Pomenat+ 3.exe**;      |
 | 6 | Проследуйте инструкции.      |
