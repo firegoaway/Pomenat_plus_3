@@ -20,7 +20,7 @@
 
 Полученное при завате изображение токенизируется в численно-буквенный вид специальным образом, образуя особый посев символов ASCII, который соответствует захваченному набору сильно выраженных пикселей, позволяя обнаруживать не только тело захваченного изображения на экране, но и его морфологические подобия по оттенкам, положению пикселей, размеру и соотношению сторон.
 
-```
+```AutoHotKey
  t1 := A_TickCount, X := Y := ""
 graphicsearch_query := "|<>*164$45.y0000006L/ihRermjhpfxSyJzcxFvomzprzhOs0001000U"
  resultObj := graphicsearch.search(GraphicSearch_query)
@@ -28,12 +28,7 @@ graphicsearch_query := "|<>*164$45.y0000006L/ihRermjhpfxSyJzcxFvomzprzhOs0001000
    X := resultObj.1.x, Y := resultObj.1.y, Comment := resultObj.1.id
    ; Click, %X%, %Y%
  }
-
- MsgBox, 4096, Tip, % "Found :`t" Round(resultObj.MaxIndex())
-   . "`n`nTime  :`t" (A_TickCount-t1) " ms"
-   . "`n`nPos   :`t" X ", " Y
-   . "`n`nResult:`t" (resultObj ? "Success !" : "Failed !")
-
+ 
  for i,v in resultObj
    if (i<=2)
      graphicsearch.mouseTip(resultObj[i].x, resultObj[i].y)
