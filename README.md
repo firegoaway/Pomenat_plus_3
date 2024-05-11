@@ -34,6 +34,9 @@ graphicsearch_query := "|<>*164$45.y0000006L/ihRermjhpfxSyJzcxFvomzprzhOs0001000
      graphicsearch.mouseTip(resultObj[i].x, resultObj[i].y)
 ```
 
+**Результат:**
+![firegoaway_pomenat_demo_compressed](https://raw.githubusercontent.com/firegoaway/Pomenat_plus_3/main/.gitpics/pomenat_demo_compressed.gif)
+
 ## Статус разработки
 > Альфа
 
