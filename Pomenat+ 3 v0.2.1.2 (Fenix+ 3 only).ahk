@@ -17,7 +17,7 @@ Gui, Add, Edit, vUserInput
 Gui, Add, Button, Default gSubmitButton, Submit
 Gui, Add, Text, vResultLabel
 
-Gui, Show, w300 h100, Input GUI
+Gui, Show, w300 h100, Pomenat+ 3
 
 Return	; Чтобы скрипт не терминировался раньше времени
 
@@ -50,7 +50,7 @@ GuiEscape:
 	Hotkey, Esc, TerminateApp
 ;;;;;;;;;;;;;;;;;;;;;;;;GUI END;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-MsgBox, 4096, Инструкция, 1. Откройте окно Fenix+ 3 `n2. Раскройте перечень всех помещений во вкладке "Компонентное" `n3. Поместите курсор мыши в окно вьюпорта `n4. Нажмите "Z" на клавиатуре `n5. Дождитесь окончания процесса `n`nВо время работы утилиты, не трогайте мышь и не нажимайте кнопки на клавиатуре. `n`nНажмите "Esc" на клавиатуре в любой момент, чтобы принудительно завершить работу утилиты.
+MsgBox, 4096, Инструкция, 1. Откройте окно Fenix+ 3 `n2. Раскройте перечень всех помещений во вкладке "Компонентное" `n3. Поместите курсор мыши в окно вьюпорта `n4. Нажмите "Z" на клавиатуре `n5. Дождитесь окончания процесса `n`nВо время работы утилиты, не трогайте мышь и не нажимайте кнопки на клавиатуре. `n`nНажмите "Esc" на клавиатуре в любой момент, чтобы принудительно завершить работу утилиты. `n`nРекомендации перед запуском: `n1. Раскрыть сценарий, чтобы были видны все этажи и их содержимое `n2. Перейти во вкладку "Компонентное" и раскрыть список помещений `n3. Закрыть вкладку со сценарием в окне вьюпорта. `n`nЕсли у вас два монитора, то Fenix+ 3 должен быть открыт во весь экран на основном мониторе.
 
 Loop
 {
@@ -82,8 +82,8 @@ X := ""
 Y := ""
 
 ;;;;QUERIES START;;;;
-Query .="|<>*161$65.zU0000000013000000000260000000004AwEXYGC9cncPAn8cYWnH8ko9aTN9xybTVcHIUmG3BKV3NZd14Y6PBW6S/FvzbgqFs000001000000000020000E"
-Query .="|<>**50$66.zU000000000VU000000000VU000000000VbbCQqFnBaSVgrAWqG/BimVcHAyqHvxyzVcHwUqG3BKUVgqokqH3BqklbaqyztvBaS0000008000000000080000U"
+Query .= "|<>*161$65.zU0000000013000000000260000000004AwEXYGC9cncPAn8cYWnH8ko9aTN9xybTVcHIUmG3BKV3NZd14Y6PBW6S/FvzbgqFs000001000000000020000E"
+Query .= "|<>**50$66.zU000000000VU000000000VU000000000VbbCQqFnBaSVgrAWqG/BimVcHAyqHvxyzVcHwUqG3BKUVgqokqH3BqklbaqyztvBaS0000008000000000080000U"
 Query .= "|<>#492@0.66$65.zU00000000110000000002200000000044wEXYGC8cXc/4n8cYWFH8kI9aTF9wyYTUcH4UWG15EV1MZd14Y2/1W2S/FvzbYK1s000001000000000020000E"
 ;;;;;QUERIES END;;;;;
 
@@ -98,15 +98,11 @@ Loop, % Pom_OAN
 	if (Round(resultObj.MaxIndex()) < 1)
 	{
 		SendMouse_AbsoluteMove(X, Y)
-			Sleep, 200
+			Sleep, 250
 		SendInput {LButton}
-			Sleep, 200
+			Sleep, 250
 		SendInput % "{Down " 20 - Sqrt(Ln(PomIndex)) "}"
-			Sleep, 200
-		Pom_OAN := Pom_OAN - PomIndex
-		ToolTip, % "PomIndex is`t" PomIndex "`nPom_OAN is`t" Pom_OAN
-			Sleep, 400
-			ToolTip
+			Sleep, 500
 	}
 	for i,v in resultObj
 	{
