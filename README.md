@@ -46,8 +46,7 @@ graphicsearch_query := "|<>*164$45.y0000006L/ihRermjhpfxSyJzcxFvomzprzhOs0001000
 > Альфа
 
 ## Сторонние библиотеки
-Утилита использует одну из самых мощных поисковых библиотек:
-> [graphicsearch.ahk](https://chunjee.github.io/graphicsearch.ahk/)
+Утилита использует одну из самых мощных поисковых библиотек: [**graphicsearch.ahk**](https://chunjee.github.io/graphicsearch.ahk/)
 
 ## Как установить и пользоваться
 | № п/п | Действие |
