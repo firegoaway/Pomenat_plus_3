@@ -47,7 +47,7 @@ graphicsearch_query := "|<>*164$45.y0000006L/ihRermjhpfxSyJzcxFvomzprzhOs0001000
 ## Как установить и пользоваться
 | № п/п | Действие |
 |---------|---------|
-| 1 | Скачайте последнюю версию **Pomenat+ 3** в формате **.zip** в разделе [Releases](https://github.com/firegoaway/Pomenat_plus_3/releases);     |
+| 1 | Скачайте последнюю версию **Pomenat+ 3** в формате **.zip** в разделе [**Releases**](https://github.com/firegoaway/Pomenat_plus_3/releases);     |
 | 2 | Разархиваруйте в любое удобное место;      |
 | 3 | Запустите **Pomenat+ 3.exe**;      |
 | 4 | Проследуйте инструкции.      |
