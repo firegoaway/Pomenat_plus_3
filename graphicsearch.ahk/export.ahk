@@ -27,18 +27,18 @@ class graphicsearch {
 		DllCall("DeleteObject", "Ptr",this.bits.hBM)
 	}
 
-	find(x1 := 0, y1 := 0, x2 := 0, y2 := 0, err1 := 0, err0 := 0, text := "", ScreenShot := 1
-		, FindAll := 1, JoinText := 0, offsetX := 20, offsetY := 10, dir := 1) {
-
+	find(x1 := 0, y1 := 0, x2 := 0, y2 := 0, err1 := 0, err0 := 0, text := "", ScreenShot := 1, FindAll := 1, JoinText := 0, offsetX := 20, offsetY := 10, dir := 1)
+	{
 		local
 		SetBatchLines, % (bch := A_BatchLines)?"-1":"-1"
-		centerX := Round(x1+x2)//2, centerY := Round(y1+y2)//2
+		centerX := Round(x1+x2)//2
+		centerY := Round(y1+y2)//2
 		if (x1*x1+y1*y1+x2*x2+y2*y2<=0)
-		n := 150000, x := y := -n, w := h := 2*n
+			n := 150000, x := y := -n, w := h := 2*n
 		else
-		x := Min(x1,x2), y := Min(y1,y2), w := Abs(x2-x1)+1, h := Abs(y2-y1)+1
+			x := Min(x1,x2), y := Min(y1,y2), w := Abs(x2-x1)+1, h := Abs(y2-y1)+1
 		bits := this.GetBitsFromScreen(x,y,w,h,ScreenShot,zx,zy,zw,zh)
-		, info := []
+		info := []
 		loop, Parse, text, |
 		if IsObject(j := this.PicInfo(A_LoopField))
 			info.Push(j)
@@ -760,7 +760,7 @@ class graphicsearch {
 			WinSet, Transparent, 255, ahk_id %bind_id%
 			loop, 30
 			{
-			Sleep, 100
+			Sleep, 80
 			WinGet, i, Transparent, ahk_id %bind_id%
 			}
 			Until (i=255)
@@ -1119,7 +1119,7 @@ class graphicsearch {
 		loop, 4
 		{
 		Gui, _MouseTip_: Color, % A_Index & 1 ? "Red" : "Blue"
-		Sleep, 500
+		Sleep, 80
 		}
 		Gui, _MouseTip_: Destroy
 	}
@@ -1238,8 +1238,7 @@ class graphicsearch {
 
 	; Show the saved Picture file
 
-	ShowPic(file := "", show := 1
-		, ByRef zx := "", ByRef zy := "", ByRef w := "", ByRef h := "")
+	ShowPic(file := "", show := 1, ByRef zx := "", ByRef zy := "", ByRef w := "", ByRef h := "")
 	{
 		local
 		static Ptr := "Ptr"
@@ -1277,41 +1276,41 @@ class graphicsearch {
 	{
 		__New(args*)
 		{
-		this.pid := this.Exec(args*)
+			this.pid := this.Exec(args*)
 		}
 		__Delete()
 		{
-		Process, Close, % this.pid
+			Process, Close, % this.pid
 		}
 		Exec(s, Ahk := "", args := "")
 		{
-		local
-		Ahk := Ahk ? Ahk:A_IsCompiled ? A_ScriptDir "\AutoHotkey.exe":A_AhkPath
-		s := "DllCall(""SetWindowText"",""Ptr"",A_ScriptHwnd,""Str"",""<AHK>"")`n"
+			local
+			Ahk := Ahk ? Ahk:A_IsCompiled ? A_ScriptDir "\AutoHotkey.exe":A_AhkPath
+			s := "DllCall(""SetWindowText"",""Ptr"",A_ScriptHwnd,""Str"",""<AHK>"")`n"
 			. StrReplace(s,"`r"), pid := ""
-		try
-		{
-			shell := ComObjCreate("WScript.Shell")
-			oExec := shell.Exec("""" Ahk """ /f * " args)
-			oExec.StdIn.Write(s)
-			oExec.StdIn.Close(), pid := oExec.ProcessID
-		}
-		catch
-		{
-			f := A_Temp "\~ahk.tmp"
-			s := "`n FileDelete, " f "`n" s
-			FileDelete, %f%
-			FileAppend, %s%, %f%
-			r := ObjBindMethod(this, "Clear")
-			SetTimer, %r%, -3000
-			Run, "%Ahk%" /f "%f%" %args%,, UseErrorLevel, pid
-		}
+			try
+			{
+				shell := ComObjCreate("WScript.Shell")
+				oExec := shell.Exec("""" Ahk """ /f * " args)
+				oExec.StdIn.Write(s)
+				oExec.StdIn.Close(), pid := oExec.ProcessID
+			}
+			catch
+			{
+				f := A_Temp "\~ahk.tmp"
+				s := "`n FileDelete, " f "`n" s
+				FileDelete, %f%
+				FileAppend, %s%, %f%
+				r := ObjBindMethod(this, "Clear")
+				SetTimer, %r%, -3000
+				Run, "%Ahk%" /f "%f%" %args%,, UseErrorLevel, pid
+			}
 		return pid
 		}
 		Clear()
 		{
-		FileDelete, % A_Temp "\~ahk.tmp"
-		SetTimer,, Off
+			FileDelete, % A_Temp "\~ahk.tmp"
+			SetTimer,, Off
 		}
 	}
 
@@ -1359,19 +1358,18 @@ class graphicsearch {
 		local
 		dx := dy := 0
 		if (A_CoordModePixel="Window")
-		this.WindowToScreen(dx,dy,0,0)
+			this.WindowToScreen(dx,dy,0,0)
 		else if (A_CoordModePixel="Client")
-		this.ClientToScreen(dx,dy,0,0)
-		if (ok := this.FindText(x1+dx, y1+dy, x2+dx, y2+dy
-		, 0, 0, text, ScreenShot, FindAll))
+			this.ClientToScreen(dx,dy,0,0)
+		if (ok := this.FindText(x1+dx, y1+dy, x2+dx, y2+dy, 0, 0, text, ScreenShot, FindAll))
 		{
-		rx := ok.1.x-dx, ry := ok.1.y-dy, ErrorLevel := 0
-		return 1
+			rx := ok.1.x-dx, ry := ok.1.y-dy, ErrorLevel := 0
+			return 1
 		}
 		else
 		{
-		rx := ry := "", ErrorLevel := 1
-		return 0
+			rx := ry := "", ErrorLevel := 1
+			return 0
 		}
 	}
 }
