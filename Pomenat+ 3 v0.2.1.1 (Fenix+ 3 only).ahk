@@ -54,7 +54,7 @@ MsgBox, 4096, Инструкция, 1. Откройте окно Fenix+ 3 `n2. �
 
 Loop
 {
-	FenixExist := WinExist("ahk_exe Fenix+ 3.exe")
+	FenixExist := WinExist("ahk_exe Fenix.exe")
 	if FenixExist
 	{
 		Loop
@@ -62,8 +62,8 @@ Loop
 			ToolTip, Ожидание нажатия клавиши Z...
 			ZIsDown := GetKeyState("Z")
 		} Until (ZIsDown = 1)
-		WinActivate, ahk_exe Fenix+ 3.exe
-		FenixActive := WinActive("ahk_exe Fenix+ 3.exe")
+		WinActivate, ahk_exe Fenix.exe
+		FenixActive := WinActive("ahk_exe Fenix.exe")
 		if !FenixActive
 		{
 			ToolTip, Ожидание открытия окна Fenix+ 3...
