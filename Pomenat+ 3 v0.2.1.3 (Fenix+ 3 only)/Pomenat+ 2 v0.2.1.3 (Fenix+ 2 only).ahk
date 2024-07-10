@@ -8,7 +8,7 @@
 SendMode, InputThenPlay
 CoordMode, Pixel, Screen
 CoordMode, Mouse, Screen
-; SetBatchLines, 1000ms
+SetBatchLines, 8ms
 SetWorkingDir %A_ScriptDir%
 
 ;;;;;;;;;;;;;;;;;;;;;;;;GUI START;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -50,11 +50,11 @@ GuiEscape:
 	Hotkey, Esc, TerminateApp
 ;;;;;;;;;;;;;;;;;;;;;;;;GUI END;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-MsgBox, 4096, Инструкция, Перед началом использования убедитесь, что в пожарной модели расставлены только помещения, без людей и горючей нагрузки. `nВ противном случае утилита может подлагивать в процессе переименования. `n`n1. Откройте окно Fenix+ 3 `n2. Раскройте перечень всех помещений во вкладке "Компонентное" `n3. Поместите курсор мыши в окно вьюпорта `n4. Нажмите "Z" на клавиатуре `n5. Дождитесь окончания процесса `n`nВо время работы утилиты, не трогайте мышь и не нажимайте кнопки на клавиатуре. `n`nНажмите "Esc" на клавиатуре в любой момент, чтобы принудительно завершить работу утилиты. `n`nРекомендации перед запуском: `n1. Раскрыть сценарий, чтобы были видны все этажи и их содержимое `n2. Перейти во вкладку "Компонентное" и раскрыть список помещений `n3. Закрыть вкладку со сценарием в окне вьюпорта. `n`nЕсли у вас два монитора, то Fenix+ 3 должен быть открыт во весь экран на основном мониторе.
+MsgBox, 4096, Инструкция, Перед началом использования убедитесь, что в пожарной модели расставлены только помещения, без людей и горючей нагрузки. `nВ противном случае утилита может подлагивать в процессе переименования. `n`n1. Откройте окно Fenix+ 2 `n2. Раскройте перечень всех помещений во вкладке "Компонентное" `n3. Поместите курсор мыши в окно вьюпорта `n4. Нажмите "Z" на клавиатуре `n5. Дождитесь окончания процесса `n`nВо время работы утилиты, не трогайте мышь и не нажимайте кнопки на клавиатуре. `n`nНажмите "Esc" на клавиатуре в любой момент, чтобы принудительно завершить работу утилиты. `n`nРекомендации перед запуском: `n1. Раскрыть сценарий, чтобы были видны все этажи и их содержимое `n2. Перейти во вкладку "Компонентное" и раскрыть список помещений `n3. Закрыть вкладку со сценарием в окне вьюпорта. `n`nЕсли у вас два монитора, то Fenix+ 2 должен быть открыт во весь экран на основном мониторе.
 
 Loop
 {
-	FenixExist := WinExist("ahk_exe Fenix.exe")
+	FenixExist := WinExist("ahk_exe Fenix_server_original.exe")
 	if FenixExist
 	{
 		Loop
@@ -62,16 +62,16 @@ Loop
 			ToolTip, Ожидание нажатия клавиши Z...
 			ZIsDown := GetKeyState("Z")
 		} Until (ZIsDown = 1)
-		WinActivate, ahk_exe Fenix.exe
-		FenixActive := WinActive("ahk_exe Fenix.exe")
+		WinActivate, ahk_exe Fenix_server_original.exe
+		FenixActive := WinActive("ahk_exe Fenix_server_original.exe")
 		if !FenixActive
 		{
-			ToolTip, Ожидание открытия окна Fenix+ 3...
+			ToolTip, Ожидание открытия окна Fenix+ 2...
 		}
 	}
 	else
 	{
-		ToolTip, Ожидание запуска Fenix+ 3...
+		ToolTip, Ожидание запуска Fenix+ 2...
 		Continue
 	}
 } Until (FenixExist)
@@ -85,6 +85,7 @@ Y := ""
 Query .= "|<>*161$65.zU0000000013000000000260000000004AwEXYGC9cncPAn8cYWnH8ko9aTN9xybTVcHIUmG3BKV3NZd14Y6PBW6S/FvzbgqFs000001000000000020000E"
 Query .= "|<>**50$66.zU000000000VU000000000VU000000000VbbCQqFnBaSVgrAWqG/BimVcHAyqHvxyzVcHwUqG3BKUVgqokqH3BqklbaqyztvBaS0000008000000000080000U"
 Query .= "|<>#492@0.66$65.zU00000000110000000002200000000044wEXYGC8cXc/4n8cYWFH8kI9aTF9wyYTUcH4UWG15EV1MZd14Y2/1W2S/FvzbYK1s000001000000000020000E"
+Query .= "|<>*167$84.zzk00000000000zzk00000000000k0k00000000000k0kTk000000000k0kEk000000000k0kEk000000000kSkEnl2CF8taWCk0kEqNaFF95aaFk0kEo9aTF9xyaTk0kEo9eEF91aeEk0kEqNOEF91amMk0kEnlODTwxamDk0k00000040000wTk00000040000wTk00000000000U"
 ;;;;;QUERIES END;;;;;
 
 ZeroX := ZeroY := 0
@@ -94,14 +95,14 @@ PomIndex := A_Index
 
 Loop, % Pom_OAN
 {
-	resultObj := graphicsearch.search(Query, {x1: 0, y1: 0, x2: 424, y2: 1078})
+	resultObj := graphicsearch.search(Query, {x1: 0, y1: 0, x2: A_ScreenWidth/2.75, y2: A_ScreenHeight})
 	if (Round(resultObj.MaxIndex()) < 1)
 	{
 		SendMouse_AbsoluteMove(X, Y)
 			Sleep, 250
 		SendInput {LButton}
 			Sleep, 250
-		SendInput % "{Down " 20 - Sqrt(Ln(PomIndex)) "}"
+		SendInput % "{Down " 20 - Round(Sqrt(Ln(PomIndex))) "}"
 			Sleep, 500
 	}
 	for i,v in resultObj
@@ -112,12 +113,12 @@ Loop, % Pom_OAN
 			Y := resultObj[i].y
 			; Comment := resultObj[i].id ; На случай, если в дальнейшем будем привязываться к окну программы через WinGet
 			graphicsearch.mouseTip(resultObj[i].x, resultObj[i].y)
-			SendMouse_AbsoluteMove(X, Y) ; DllCall("mouse_event", uint, 1, int, X*1.334, int, Y*1.335, uint, 0, int, 0), Sleep, 1000
+			SendMouse_AbsoluteMove(X, Y)
 				ToolTip, % "Found :`t" Round(resultObj.MaxIndex())
 				. "`n`nTime  :`t" (A_TickCount-t1) " ms"
 				. "`n`nPos   :`t" X ", " Y
 				. "`n`nResult:`t" (resultObj ? "Success !" : "Failed !")
-				; . "`n`nComment:`t" Comment
+				 . "`n`nComment:`t" Comment
 				Sleep, 150
 			SendInput {LButton}
 				ToolTip, LButton sent once
@@ -139,7 +140,9 @@ Loop, % Pom_OAN
 				Sleep, 50
 				ToolTip
 			PomIndex++
+				Sleep, 50
 			resultObj--
+				Sleep, 50
 			SendMouse_AbsoluteMove(ZeroX, ZeroY)
 				Sleep, 150
 		}
